@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <LangVersion>12.0</LangVersion>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+    <!-- Package Metadata -->
+    <PackageId>CinderBlockHtml</PackageId>
+    <Version>0.1.0</Version>
+    <Authors>Hamilton Greene</Authors>
+    <Company>HAMY LABS</Company>
+    <Description>Build robust HTML with composable blocks in C#</Description>
+    <PackageTags>html;functional;dsl;markup;csharp</PackageTags>
+    <PackageProjectUrl>https://github.com/SIRHAMY/cinderblockhtml</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SIRHAMY/cinderblockhtml</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    
+    <!-- Documentation -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>
