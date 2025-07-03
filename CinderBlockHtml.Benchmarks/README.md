@@ -31,3 +31,17 @@ Results from: 2025.07.03
 | HtmlTagsHtml    | 22.755 us | 0.4451 us | 0.6929 us | 7.6599 | 1.8921 | 117.68 KB |
 | ScribanHtml     | 49.876 us | 0.9848 us | 2.0987 us | 7.3242 | 1.2207 | 115.15 KB |
 | RazorLightHtml  | 20.309 us | 0.3925 us | 0.3672 us | 4.5166 | 0.4883 |  69.53 KB |
+
+## NestedBenchmark
+
+Render 100 items in nested divs to simulate pages with lots of nested elements, similar to complex pages with components.
+
+Results from: 2025.07.03
+
+| Method          | Mean     | Error    | StdDev   | Gen0    | Gen1   | Allocated  |
+|---------------- |---------:|---------:|---------:|--------:|-------:|-----------:|
+| CinderBlockHtml | 55.53 us | 1.091 us | 2.179 us | 14.0991 | 2.9297 |  216.73 KB |
+| RawStringHtml   | 54.83 us | 1.066 us | 1.348 us | 64.2700 |      - |  985.66 KB |
+| HtmlTagsHtml    | 64.21 us | 1.261 us | 1.887 us | 15.8691 | 6.1035 |  243.98 KB |
+| ScribanHtml     | 73.03 us | 1.451 us | 2.503 us | 70.5566 | 5.8594 | 1083.24 KB |
+| RazorLightHtml  | 61.77 us | 1.141 us | 1.121 us | 66.6504 | 4.5166 | 1023.01 KB |
