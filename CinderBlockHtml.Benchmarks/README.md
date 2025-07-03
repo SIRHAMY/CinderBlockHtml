@@ -12,11 +12,12 @@ Results from: 2025.07.03
 
 | Method          | Mean          | Error       | StdDev      | Gen0   | Gen1   | Allocated |
 |---------------- |--------------:|------------:|------------:|-------:|-------:|----------:|
-| CinderBlockHtml | 1,308.2109 ns |  24.3699 ns |  34.1632 ns | 0.3643 | 0.0019 |    5720 B |
-| RawStringHtml   |     0.1589 ns |   0.0414 ns |   0.0387 ns |      - |      - |         - |
-| HtmlTagsHtml    | 1,672.4620 ns |  33.3215 ns |  31.1690 ns | 0.4921 | 0.0057 |    7728 B |
-| ScribanHtml     | 7,458.7887 ns | 148.4774 ns | 316.4174 ns | 2.1362 | 0.1831 |   33978 B |
-| RazorLightHtml  | 3,493.0972 ns |  68.0552 ns | 115.5629 ns | 0.2899 |      - |    4679 B |
+| CinderBlockHtml | 1,205.7198 ns |  23.4702 ns |  37.9000 ns | 0.3643 | 0.0019 |    5720 B |
+| RawStringHtml   |     0.2099 ns |   0.0552 ns |   0.0516 ns |      - |      - |         - |
+| HtmlTagsHtml    | 1,703.9189 ns |  30.7848 ns |  32.9394 ns | 0.4921 | 0.0057 |    7728 B |
+| ScribanHtml     | 7,311.3971 ns | 141.9098 ns | 125.7993 ns | 2.1362 | 0.1831 |   33978 B |
+| RazorLightHtml  | 3,344.6396 ns |  57.2531 ns |  85.6937 ns | 0.2899 |      - |    4680 B |
+| EightyHtml      |   593.1341 ns |  11.6180 ns |  15.9029 ns | 0.0858 |      - |    1352 B |
 
 ## ListBenchmark
 
@@ -26,11 +27,12 @@ Results from: 2025.07.03
 
 | Method          | Mean      | Error     | StdDev    | Gen0   | Gen1   | Allocated |
 |---------------- |----------:|----------:|----------:|-------:|-------:|----------:|
-| CinderBlockHtml | 17.190 us | 0.3241 us | 0.3468 us | 6.0425 | 0.7324 |  92.78 KB |
-| RawStringHtml   |  5.063 us | 0.0994 us | 0.1221 us | 3.1052 | 0.3815 |  47.59 KB |
-| HtmlTagsHtml    | 22.755 us | 0.4451 us | 0.6929 us | 7.6599 | 1.8921 | 117.68 KB |
-| ScribanHtml     | 49.876 us | 0.9848 us | 2.0987 us | 7.3242 | 1.2207 | 115.15 KB |
-| RazorLightHtml  | 20.309 us | 0.3925 us | 0.3672 us | 4.5166 | 0.4883 |  69.53 KB |
+| CinderBlockHtml | 15.586 us | 0.2921 us | 0.3125 us | 6.0425 | 0.7324 |  92.77 KB |
+| RawStringHtml   |  4.983 us | 0.0980 us | 0.1007 us | 3.1052 | 0.2823 |  47.64 KB |
+| HtmlTagsHtml    | 21.137 us | 0.4193 us | 0.8752 us | 7.6599 | 1.8921 | 117.68 KB |
+| ScribanHtml     | 46.780 us | 0.9292 us | 1.7452 us | 7.3242 | 1.2207 | 114.85 KB |
+| RazorLightHtml  | 19.145 us | 0.3804 us | 0.7684 us | 4.5166 | 0.4883 |  69.69 KB |
+| EightyHtml      | 16.643 us | 0.2204 us | 0.2062 us | 2.4719 | 0.1221 |  37.95 KB |
 
 ## NestedBenchmark
 
@@ -40,8 +42,9 @@ Results from: 2025.07.03
 
 | Method          | Mean     | Error    | StdDev   | Gen0    | Gen1   | Allocated  |
 |---------------- |---------:|---------:|---------:|--------:|-------:|-----------:|
-| CinderBlockHtml | 55.53 us | 1.091 us | 2.179 us | 14.0991 | 2.9297 |  216.73 KB |
-| RawStringHtml   | 54.83 us | 1.066 us | 1.348 us | 64.2700 |      - |  985.66 KB |
-| HtmlTagsHtml    | 64.21 us | 1.261 us | 1.887 us | 15.8691 | 6.1035 |  243.98 KB |
-| ScribanHtml     | 73.03 us | 1.451 us | 2.503 us | 70.5566 | 5.8594 | 1083.24 KB |
-| RazorLightHtml  | 61.77 us | 1.141 us | 1.121 us | 66.6504 | 4.5166 | 1023.01 KB |
+| CinderBlockHtml | 52.30 us | 1.006 us | 0.941 us | 14.0991 | 2.9297 |  216.73 KB |
+| RawStringHtml   | 53.30 us | 0.872 us | 1.103 us | 64.2700 |      - |  985.66 KB |
+| HtmlTagsHtml    | 59.94 us | 1.155 us | 0.965 us | 15.8691 | 6.1035 |  243.98 KB |
+| ScribanHtml     | 71.03 us | 1.405 us | 2.347 us | 70.5566 | 5.8594 | 1083.24 KB |
+| RazorLightHtml  | 59.52 us | 1.177 us | 2.533 us | 66.6504 | 4.5166 | 1023.01 KB |
+| EightyHtml      | 26.15 us | 0.464 us | 0.434 us |  3.7842 | 0.0305 |   58.29 KB |
