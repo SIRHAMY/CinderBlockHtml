@@ -7,6 +7,8 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <PreserveCompilationContext>true</PreserveCompilationContext>
+    <!-- Disable CS1591 public XML docs warning -->
+    <NoWarn>$(NoWarn);CS1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +25,7 @@
     <PackageReference Include="Eighty" Version="2.1.0" />
     <PackageReference Include="HtmlTags" Version="9.0.0" />
     <PackageReference Include="RazorLight" Version="2.3.1" />
-    <PackageReference Include="Scriban" Version="6.0.0" />
+    <PackageReference Include="Scriban" Version="6.2.1" />
   </ItemGroup>
 
   <ItemGroup>
