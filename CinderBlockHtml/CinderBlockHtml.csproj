@@ -7,7 +7,7 @@
     
     <!-- Package Metadata -->
     <PackageId>CinderBlockHtml</PackageId>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Hamilton Greene</Authors>
     <Company>HAMY LABS</Company>
     <Description>Build robust HTML with composable blocks in C#</Description>
