@@ -56,6 +56,9 @@ namespace CinderBlockHtml
         public static XmlAttribute Custom(string key, string value) => new KeyValueAttr(key, value);
         public static XmlAttribute CustomBool(string key) => new BooleanAttr(key);
 
+        // Additional common attributes
+        public static XmlAttribute Content(string value) => new KeyValueAttr("content", value);
+
         // Merge function like Falco - combines attribute lists intelligently
         public static XmlAttribute[] Merge(params XmlAttribute[][] attributeLists)
         {
@@ -209,7 +212,7 @@ namespace CinderBlockHtml
     // Renderer - converts XmlNode tree to HTML string
     public static class Renderer
     {
-        public static string RenderToString(XmlNode node)
+        public static string RenderToString(this XmlNode node)
         {
             var sb = new StringBuilder();
             RenderNode(node, sb);
