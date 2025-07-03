@@ -43,13 +43,10 @@ public class NestedBenchmark
 
     public NestedBenchmark()
     {
-        var random = new Random(42); // Fixed seed for reproducible results
-        _testItems = [];
-        
-        for (int i = 0; i < TEST_ITEM_COUNT; i++)
-        {
-            _testItems.Add(new TestItem(Guid.NewGuid(), random.Next(1, 1000)));
-        }
+        var random = new Random();
+        _testItems = Enumerable.Range(0, TEST_ITEM_COUNT)
+            .Select(i => new TestItem(Guid.NewGuid(), random.Next(1, 1000)))
+            .ToList();
     }
 
     [Benchmark]
