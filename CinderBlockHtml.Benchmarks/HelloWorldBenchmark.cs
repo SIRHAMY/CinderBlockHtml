@@ -11,34 +11,26 @@ public class HelloWorldBenchmark
     [Benchmark]
     public string CinderBlockHtml()
     {
-        var html = Elem.Html(Attr.Empty(), new[]
-        {
-            Elem.Head(Attr.Empty(), new[]
-            {
-                Elem.Title(Attr.Empty(),
-                [
+        var html = Elem.Html(Attr.Empty(), [
+            Elem.Head(Attr.Empty(), [
+                Elem.Title(Attr.Empty(), [
                     Text.Raw("Hello World")
                 ])
-            }),
-            Elem.Body(Attr.Empty(), new[]
-            {
-                Elem.H1(new[]
-                {
+            ]),
+            Elem.Body(Attr.Empty(), [
+                Elem.H1([
                     Text.Raw("Hello World!")
-                }),
-                Elem.P(new[]
-                {
+                ]),
+                Elem.P([
                     Text.Raw("This is a simple hello world page generated with CinderBlock.")
-                }),
-                Elem.Div(new[] { Attr.Class("container") }, new[]
-                {
-                    Elem.P(new[]
-                    {
+                ]),
+                Elem.Div([Attr.Class("container")], [
+                    Elem.P([
                         Text.Raw("Welcome to our benchmark test!")
-                    })
-                })
-            })
-        });
+                    ])
+                ])
+            ])
+        ]);
 
         return Renderer.RenderToString(html);
     }
