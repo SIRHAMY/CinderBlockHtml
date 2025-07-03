@@ -105,6 +105,8 @@ var styledDiv = Elem.Div([Attr.Style("color: red;"), Attr.Style("background: blu
 
 ## Running Benchmarks
 
+Benchmark results: https://github.com/SIRHAMY/CinderBlockHtml/tree/main/CinderBlockHtml.Benchmarks
+
 From root: 
 
 ```
