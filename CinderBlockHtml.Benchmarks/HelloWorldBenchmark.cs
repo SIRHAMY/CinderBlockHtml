@@ -2,6 +2,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using CinderBlockHtml;
 using HtmlTags;
+using Scriban;
 
 namespace CinderBlockHtml.Benchmarks;
 
@@ -12,6 +13,20 @@ public class HelloWorldBenchmark
     private const string HelloWorldString = "Hello, World!";
     private const string DescriptionString = "This is a simple hello world page used for benchmarks.";
     private const string WelcomeString = "Welcome to our benchmark test!";
+    
+    private static readonly Template ScribanTemplate = Template.Parse(@"
+<html>
+    <head>
+        <title>{{ hello_world }}</title>
+    </head>
+    <body>
+        <h1>{{ hello_world }}</h1>
+        <p>{{ description }}</p>
+        <div class=""container"">
+            <p>{{ welcome }}</p>
+        </div>
+    </body>
+</html>");
 
     [Benchmark]
     public string CinderBlockHtml()
@@ -72,5 +87,16 @@ public class HelloWorldBenchmark
                     .AddClass("container")
                     .Append(new HtmlTag("p").Text(WelcomeString))))
             .ToString();
+    }
+
+    [Benchmark]
+    public string ScribanHtml()
+    {
+        return ScribanTemplate.Render(new
+        {
+            hello_world = HelloWorldString,
+            description = DescriptionString,
+            welcome = WelcomeString
+        });
     }
 }

@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
     <PackageReference Include="HtmlTags" Version="9.0.0" />
+    <PackageReference Include="Scriban" Version="5.15.2" />
   </ItemGroup>
 
   <ItemGroup>
