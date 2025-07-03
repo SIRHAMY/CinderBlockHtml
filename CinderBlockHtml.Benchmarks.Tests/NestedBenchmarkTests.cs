@@ -113,6 +113,27 @@ public class NestedBenchmarkTests
     }
 
     [Fact]
+    public void EightyHtml_Contains100NestedDivs()
+    {
+        var html = _benchmark.EightyHtml();
+        
+        Assert.Equal(100, CountOccurrences(html, "<div"));
+        Assert.Equal(100, CountOccurrences(html, "</div>"));
+        Assert.Equal(100, CountOccurrences(html, "ID: "));
+        Assert.Equal(100, CountOccurrences(html, "Number: "));
+        Assert.Equal(100, CountOccurrences(html, "<p>"));
+        Assert.Equal(100, CountOccurrences(html, "</p>"));
+        Assert.Contains("<title>Nested Test Items</title>", html);
+        Assert.Contains("<h1>Nested Test Items</h1>", html);
+        
+        // Check for proper nesting by verifying class attributes
+        for (int i = 0; i < 10; i++) // Check first 10 items
+        {
+            Assert.Contains($"class=\"item-{i}\"", html);
+        }
+    }
+
+    [Fact]
     public void AllMethods_ProduceEquivalentStructure()
     {
         var cinderBlockHtml = _benchmark.CinderBlockHtml();
@@ -120,15 +141,17 @@ public class NestedBenchmarkTests
         var htmlTagsHtml = _benchmark.HtmlTagsHtml();
         var scribanHtml = _benchmark.ScribanHtml();
         var razorLightHtml = _benchmark.RazorLightHtml();
+        var eightyHtml = _benchmark.EightyHtml();
         
         // All should have same number of nested divs
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<div"), CountOccurrences(rawStringHtml, "<div"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<div"), CountOccurrences(htmlTagsHtml, "<div"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<div"), CountOccurrences(scribanHtml, "<div"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<div"), CountOccurrences(razorLightHtml, "<div"));
+        Assert.Equal(CountOccurrences(cinderBlockHtml, "<div"), CountOccurrences(eightyHtml, "<div"));
         
         // All should have same basic structure
-        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml];
+        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml, eightyHtml];
         foreach (var html in allHtml)
         {
             Assert.Contains("<html>", html);
@@ -158,8 +181,9 @@ public class NestedBenchmarkTests
         var htmlTagsHtml = _benchmark.HtmlTagsHtml();
         var scribanHtml = _benchmark.ScribanHtml();
         var razorLightHtml = _benchmark.RazorLightHtml();
+        var eightyHtml = _benchmark.EightyHtml();
         
-        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml];
+        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml, eightyHtml];
         
         foreach (var html in allHtml)
         {

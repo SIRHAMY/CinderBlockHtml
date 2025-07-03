@@ -1,5 +1,6 @@
 using BenchmarkDotNet.Attributes;
 using CinderBlockHtml;
+using Eighty;
 using HtmlTags;
 using RazorLight;
 using Scriban;
@@ -208,5 +209,33 @@ public class NestedBenchmark
         };
         
         return RazorEngine.CompileRenderStringAsync("nesteditems", RazorTemplate, model).Result;
+    }
+
+    [Benchmark]
+    public string EightyHtml()
+    {
+        Html BuildNestedDivs(int index)
+        {
+            if (index >= _testItems.Count)
+                return Html.Empty;
+            
+            var item = _testItems[index];
+            var nextDiv = BuildNestedDivs(index + 1);
+            
+            return Html.div(@class: $"item-{index}")._(
+                Html.p_($"ID: {item.Id}, Number: {item.RandomNumber}"),
+                nextDiv
+            );
+        }
+
+        return Html.html_(
+            Html.head_(
+                Html.title_("Nested Test Items")
+            ),
+            Html.body_(
+                Html.h1_("Nested Test Items"),
+                BuildNestedDivs(0)
+            )
+        ).ToString();
     }
 }

@@ -1,6 +1,7 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using CinderBlockHtml;
+using Eighty;
 using HtmlTags;
 using RazorLight;
 using Scriban;
@@ -128,5 +129,22 @@ public class HelloWorldBenchmark
             Description = DescriptionString,
             Welcome = WelcomeString
         }).Result;
+    }
+    
+    [Benchmark]
+    public string EightyHtml()
+    {
+        return Html.html_(
+            Html.head_(
+                Html.title_(HelloWorldString)
+            ),
+            Html.body_(
+                Html.h1_(HelloWorldString),
+                Html.p_(DescriptionString),
+                Html.div(@class: "container")._(
+                    Html.p_(WelcomeString)
+                )
+            )
+        ).ToString();
     }
 }

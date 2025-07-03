@@ -1,5 +1,6 @@
 using BenchmarkDotNet.Attributes;
 using CinderBlockHtml;
+using Eighty;
 using HtmlTags;
 using RazorLight;
 using Scriban;
@@ -153,5 +154,23 @@ public class ListBenchmark
         };
         
         return RazorEngine.CompileRenderStringAsync("listitems", RazorTemplate, model).Result;
+    }
+
+    [Benchmark]
+    public string EightyHtml()
+    {
+        var listItems = _testItems.Select(item =>
+            Html.li_($"ID: {item.Id}, Number: {item.RandomNumber}")
+        ).ToArray();
+
+        return Html.html_(
+            Html.head_(
+                Html.title_("Test Items")
+            ),
+            Html.body_(
+                Html.h1_("Test Items"),
+                Html.ul_(listItems)
+            )
+        ).ToString();
     }
 }

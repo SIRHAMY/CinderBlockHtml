@@ -83,6 +83,21 @@ public class ListBenchmarkTests
     }
 
     [Fact]
+    public void EightyHtml_Contains100ListItems()
+    {
+        var html = _benchmark.EightyHtml();
+        
+        Assert.Equal(100, CountOccurrences(html, "<li>"));
+        Assert.Equal(100, CountOccurrences(html, "</li>"));
+        Assert.Equal(100, CountOccurrences(html, "ID: "));
+        Assert.Equal(100, CountOccurrences(html, "Number: "));
+        Assert.Contains("<title>Test Items</title>", html);
+        Assert.Contains("<h1>Test Items</h1>", html);
+        Assert.Contains("<ul>", html);
+        Assert.Contains("</ul>", html);
+    }
+
+    [Fact]
     public void AllMethods_ProduceEquivalentStructure()
     {
         var cinderBlockHtml = _benchmark.CinderBlockHtml();
@@ -90,15 +105,17 @@ public class ListBenchmarkTests
         var htmlTagsHtml = _benchmark.HtmlTagsHtml();
         var scribanHtml = _benchmark.ScribanHtml();
         var razorLightHtml = _benchmark.RazorLightHtml();
+        var eightyHtml = _benchmark.EightyHtml();
         
         // All should have same number of list items
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<li>"), CountOccurrences(rawStringHtml, "<li>"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<li>"), CountOccurrences(htmlTagsHtml, "<li>"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<li>"), CountOccurrences(scribanHtml, "<li>"));
         Assert.Equal(CountOccurrences(cinderBlockHtml, "<li>"), CountOccurrences(razorLightHtml, "<li>"));
+        Assert.Equal(CountOccurrences(cinderBlockHtml, "<li>"), CountOccurrences(eightyHtml, "<li>"));
         
         // All should have same basic structure
-        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml];
+        string[] allHtml = [cinderBlockHtml, rawStringHtml, htmlTagsHtml, scribanHtml, razorLightHtml, eightyHtml];
         foreach (var html in allHtml)
         {
             Assert.Contains("<html>", html);
