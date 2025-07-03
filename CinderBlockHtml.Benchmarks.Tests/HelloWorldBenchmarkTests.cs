@@ -111,6 +111,51 @@ public class HelloWorldBenchmarkTests
     }
 
     [Fact]
+    public void RazorLightHtml_ContainsExpectedStrings()
+    {
+        var html = _benchmark.RazorLightHtml();
+        
+        Assert.Contains("Hello, World!", html);
+        Assert.Contains("This is a simple hello world page used for benchmarks.", html);
+        Assert.Contains("Welcome to our benchmark test!", html);
+        Assert.Contains("class=\"container\"", html);
+    }
+
+    [Fact]
+    public void RazorLightHtml_ContainsExpectedHtmlElements()
+    {
+        var html = _benchmark.RazorLightHtml();
+        
+        Assert.Contains("<html>", html);
+        Assert.Contains("</html>", html);
+        Assert.Contains("<head>", html);
+        Assert.Contains("</head>", html);
+        Assert.Contains("<title>", html);
+        Assert.Contains("</title>", html);
+        Assert.Contains("<body>", html);
+        Assert.Contains("</body>", html);
+        Assert.Contains("<h1>", html);
+        Assert.Contains("</h1>", html);
+        Assert.Contains("<p>", html);
+        Assert.Contains("</p>", html);
+        Assert.Contains("<div", html);
+        Assert.Contains("</div>", html);
+    }
+
+    [Fact]
+    public void RazorLightHtml_ContainsExpectedStringCounts()
+    {
+        var html = _benchmark.RazorLightHtml();
+        
+        Assert.Equal(2, CountOccurrences(html, "Hello, World!"));
+        Assert.Equal(1, CountOccurrences(html, "This is a simple hello world page used for benchmarks."));
+        Assert.Equal(1, CountOccurrences(html, "Welcome to our benchmark test!"));
+        Assert.Equal(1, CountOccurrences(html, "class=\"container\""));
+        Assert.Equal(2, CountOccurrences(html, "<p>"));
+        Assert.Equal(2, CountOccurrences(html, "</p>"));
+    }
+
+    [Fact]
     public void RawStringHtml_ContainsExpectedStringCounts()
     {
         var html = _benchmark.RawStringHtml();
@@ -130,19 +175,20 @@ public class HelloWorldBenchmarkTests
         var rawStringHtml = _benchmark.RawStringHtml();
         var htmlTagsHtml = _benchmark.HtmlTagsHtml();
         var scribanHtml = _benchmark.ScribanHtml();
+        var razorLightHtml = _benchmark.RazorLightHtml();
         
         // All outputs should have the same content when whitespace is normalized
         var normalizedCinderBlock = NormalizeWhitespace(cinderBlockHtml);
         var normalizedRawString = NormalizeWhitespace(rawStringHtml);
         var normalizedHtmlTags = NormalizeWhitespace(htmlTagsHtml);
         var normalizedScriban = NormalizeWhitespace(scribanHtml);
+        var normalizedRazorLight = NormalizeWhitespace(razorLightHtml);
         
         Assert.Equal(normalizedCinderBlock, normalizedRawString);
         Assert.Equal(normalizedCinderBlock, normalizedHtmlTags);
         Assert.Equal(normalizedCinderBlock, normalizedScriban);
-        Assert.Equal(normalizedRawString, normalizedHtmlTags);
-        Assert.Equal(normalizedRawString, normalizedScriban);
-        Assert.Equal(normalizedHtmlTags, normalizedScriban);
+        Assert.Equal(normalizedCinderBlock, normalizedRazorLight);
+
     }
 
     private static int CountOccurrences(string text, string pattern)

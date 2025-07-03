@@ -2,6 +2,7 @@ using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using CinderBlockHtml;
 using HtmlTags;
+using RazorLight;
 using Scriban;
 
 namespace CinderBlockHtml.Benchmarks;
@@ -27,6 +28,24 @@ public class HelloWorldBenchmark
         </div>
     </body>
 </html>");
+    
+    private static readonly RazorLightEngine RazorEngine = new RazorLightEngineBuilder()
+        .UseMemoryCachingProvider()
+        .Build();
+    
+    private const string RazorTemplate = @"
+<html>
+    <head>
+        <title>@Model.HelloWorld</title>
+    </head>
+    <body>
+        <h1>@Model.HelloWorld</h1>
+        <p>@Model.Description</p>
+        <div class=""container"">
+            <p>@Model.Welcome</p>
+        </div>
+    </body>
+</html>";
 
     [Benchmark]
     public string CinderBlockHtml()
@@ -98,5 +117,16 @@ public class HelloWorldBenchmark
             description = DescriptionString,
             welcome = WelcomeString
         });
+    }
+    
+    [Benchmark]
+    public string RazorLightHtml()
+    {
+        return RazorEngine.CompileRenderStringAsync("helloworld", RazorTemplate, new
+        {
+            HelloWorld = HelloWorldString,
+            Description = DescriptionString,
+            Welcome = WelcomeString
+        }).Result;
     }
 }
