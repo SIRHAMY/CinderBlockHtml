@@ -36,7 +36,7 @@ var greeting = Elem.Div([Attr.Class("container")], [
 ]);
 
 // Convert to HTML string
-var html = greeting.Pipe(Renderer.RenderToString);
+var html = greeting.RenderToString();
 // Output: <div class="container">Hello World</div>
 ```
 
@@ -49,7 +49,7 @@ var page = Elem.Div([Attr.Class("main"), Attr.Id("content")], [
         Text.Encoded("This is a paragraph with "),
         Elem.Strong([], [Text.Encoded("bold text")])
     ])
-]).Pipe(Renderer.RenderToString);
+]).RenderToString();
 ```
 
 ### Forms and Input Elements
@@ -59,7 +59,7 @@ var form = Elem.Form([Attr.Action("/submit"), Attr.Method("POST")], [
     Elem.Input([Attr.Type("text"), Attr.Name("username"), Attr.Placeholder("Enter username")]),
     Elem.Input([Attr.Type("password"), Attr.Name("password")]),
     Elem.Input([Attr.Type("submit"), Attr.Value("Login")])
-]).Pipe(Renderer.RenderToString);
+]).RenderToString();
 ```
 
 ### Dynamic Content
@@ -71,7 +71,7 @@ var productList = Elem.Ul([Attr.Class("product-list")],
     products.Select(p => 
         Elem.Li([Attr.Class("product-item")], [Text.Encoded(p)])
     ).ToArray()
-).Pipe(Renderer.RenderToString);
+).RenderToString();
 ```
 
 ### Text Handling

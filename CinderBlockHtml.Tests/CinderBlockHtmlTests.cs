@@ -9,7 +9,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void TextNode_Raw_ShouldNotEscapeHtml()
     {
-        var result = Text.Raw("<script>alert('test')</script>").Pipe(Renderer.RenderToString);
+        var result = Text.Raw("<script>alert('test')</script>").RenderToString();
         
         Assert.Equal("<script>alert('test')</script>", result);
     }
@@ -17,7 +17,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void TextNode_Encoded_ShouldEscapeHtml()
     {
-        var result = Text.Encoded("<script>alert('test')</script>").Pipe(Renderer.RenderToString);
+        var result = Text.Encoded("<script>alert('test')</script>").RenderToString();
         
         Assert.Equal("&lt;script&gt;alert(&#39;test&#39;)&lt;/script&gt;", result);
     }
@@ -27,7 +27,7 @@ public class CinderBlockHtmlTests
     {
         var result = Elem.Div([Attr.Class("container"), Attr.Id("main")], [
             Text.Encoded("Hello World")
-        ]).Pipe(Renderer.RenderToString);
+        ]).RenderToString();
         
         Assert.Equal("<div class=\"container\" id=\"main\">Hello World</div>", result);
     }
@@ -37,7 +37,7 @@ public class CinderBlockHtmlTests
     {
         var result = Elem.Div([Attr.Class("btn"), Attr.Class("primary")], [
             Text.Encoded("Click me")
-        ]).Pipe(Renderer.RenderToString);
+        ]).RenderToString();
         
         Assert.Equal("<div class=\"btn primary\">Click me</div>", result);
     }
@@ -45,7 +45,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void Elem_SelfClosing_ShouldNotHaveClosingTag()
     {
-        var result = Elem.Input([Attr.Type("text"), Attr.Name("username"), Attr.Value("test")]).Pipe(Renderer.RenderToString);
+        var result = Elem.Input([Attr.Type("text"), Attr.Name("username"), Attr.Value("test")]).RenderToString();
         
         Assert.Equal("<input type=\"text\" name=\"username\" value=\"test\" />", result);
     }
@@ -62,7 +62,7 @@ public class CinderBlockHtmlTests
                     Elem.P([], [Text.Encoded("Hello World")])
                 ])
             ])
-        ]).Pipe(Renderer.RenderToString);
+        ]).RenderToString();
         
         var expected = "<html lang=\"en\"><head><title>Test Page</title></head><body class=\"main\"><div id=\"content\"><p>Hello World</p></div></body></html>";
         Assert.Equal(expected, result);
@@ -73,7 +73,7 @@ public class CinderBlockHtmlTests
     {
         var result = Elem.Div([Attr.Style("color: red;"), Attr.Style("background: blue;")], [
             Text.Encoded("Styled content")
-        ]).Pipe(Renderer.RenderToString);
+        ]).RenderToString();
         
         Assert.Equal("<div style=\"color: red; background: blue;\">Styled content</div>", result);
     }
@@ -81,7 +81,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void Elem_EmptyChildren_ShouldRenderEmptyElement()
     {
-        var result = Elem.Div([Attr.Class("empty")], []).Pipe(Renderer.RenderToString);
+        var result = Elem.Div([Attr.Class("empty")], []).RenderToString();
         
         Assert.Equal("<div class=\"empty\"></div>", result);
     }
@@ -89,7 +89,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void Attr_BooleanAttribute_ShouldRenderCorrectly()
     {
-        var result = Elem.Input([Attr.Type("checkbox"), Attr.Checked()]).Pipe(Renderer.RenderToString);
+        var result = Elem.Input([Attr.Type("checkbox"), Attr.Checked()]).RenderToString();
         
         Assert.Equal("<input type=\"checkbox\" checked />", result);
     }
@@ -97,7 +97,7 @@ public class CinderBlockHtmlTests
     [Fact]
     public void Text_Rawf_ShouldFormatAndNotEscape()
     {
-        var result = Text.Rawf("Hello <b>{0}</b>!", "World").Pipe(Renderer.RenderToString);
+        var result = Text.Rawf("Hello <b>{0}</b>!", "World").RenderToString();
         
         Assert.Equal("Hello <b>World</b>!", result);
     }
@@ -121,7 +121,7 @@ public class CinderBlockHtmlTests
                     )
                 ])
             ])
-        ]).Pipe(Renderer.RenderToString);
+        ]).RenderToString();
         
         Assert.Contains("<title>Products</title>", result);
         Assert.Contains("<h1>Product List</h1>", result);
