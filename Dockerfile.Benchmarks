@@ -1,0 +1,20 @@
+# Use the .NET 9.0 SDK for building
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Copy project files and restore
+
+COPY CinderBlockHtml.Benchmarks/CinderBlockHtml.Benchmarks.csproj CinderBlockHtml.Benchmarks/
+COPY CinderBlockHtml/CinderBlockHtml.csproj CinderBlockHtml/
+
+RUN dotnet restore CinderBlockHtml.Benchmarks/CinderBlockHtml.Benchmarks.csproj
+RUN dotnet restore CinderBlockHtml/CinderBlockHtml.csproj
+
+# Copy source code
+COPY CinderBlockHtml.Benchmarks/ CinderBlockHtml.Benchmarks/
+COPY CinderBlockHtml/ CinderBlockHtml/
+
+RUN dotnet build CinderBlockHtml.Benchmarks/CinderBlockHtml.Benchmarks.csproj -c Release
+
+WORKDIR /src/CinderBlockHtml.Benchmarks
+ENTRYPOINT ["dotnet", "run", "CinderBlockHtml.Benchmarks.dll", "-c", "Release"]
