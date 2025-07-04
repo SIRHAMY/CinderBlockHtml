@@ -7,14 +7,14 @@
     
     <!-- Package Metadata -->
     <PackageId>CinderBlockHtml</PackageId>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
     <Authors>Hamilton Greene</Authors>
     <Company>HAMY LABS</Company>
     <Description>Build robust HTML with composable blocks in C#</Description>
     <PackageTags>html;functional;dsl;markup;csharp</PackageTags>
     <PackageProjectUrl>https://github.com/SIRHAMY/cinderblockhtml</PackageProjectUrl>
     <RepositoryUrl>https://github.com/SIRHAMY/cinderblockhtml</RepositoryUrl>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     
     <!-- Documentation -->
