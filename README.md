@@ -4,7 +4,7 @@ Nuget: https://www.nuget.org/packages/CinderBlockHtml
 
 CinderBlockHtml is a C# DSL for building HTML with composable building blocks.
 
-It is a port of Pim Brouwer's F# [Falco.Markup](https://github.com/falcoframework/Falco.Markup) to C#.
+It is a port of [Pim Brouwer's](https://github.com/pimbrouwers) F# [Falco.Markup](https://github.com/falcoframework/Falco.Markup) to C#.
 
 ## Purpose
 
