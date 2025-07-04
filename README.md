@@ -1,3 +1,5 @@
+Nuget: https://www.nuget.org/packages/CinderBlockHtml
+
 # Overview
 
 CinderBlockHtml is a C# DSL for building HTML with composable building blocks.
