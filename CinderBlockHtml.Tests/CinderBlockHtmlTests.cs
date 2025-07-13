@@ -129,4 +129,41 @@ public class CinderBlockHtmlTests
         Assert.Contains("<li class=\"product-item\">Product 2</li>", result);
         Assert.Contains("<li class=\"product-item\">Product 3</li>", result);
     }
+
+    [Fact]
+    public void Div_WithVariousAttributes_ShouldRenderAllCorrectly()
+    {
+        // Test a div with many different attributes to ensure they all work
+        var result = Elem.Div([
+            Attr.Id("test-div"),
+            Attr.Class("container"),
+            Attr.Class("active"), // Multiple classes should merge
+            Attr.Style("color: red;"),
+            Attr.Style("background: white;"), // Multiple styles should merge
+            Attr.Title("This is a tooltip"),
+            Attr.Custom("data-id", "123"),
+            Attr.Custom("data-name", "test"),
+            Attr.OnClick("handleClick()"),
+            Attr.OnChange("handleChange()"),
+            Attr.Hidden()
+        ], [
+            Text.Encoded("Test Content")
+        ]).RenderToString();
+
+        // Check that all attributes are present
+        Assert.Contains("id=\"test-div\"", result);
+        Assert.Contains("class=\"container active\"", result);
+        Assert.Contains("style=\"color: red; background: white;\"", result);
+        Assert.Contains("title=\"This is a tooltip\"", result);
+        Assert.Contains("data-id=\"123\"", result);
+        Assert.Contains("data-name=\"test\"", result);
+        Assert.Contains("onclick=\"handleClick()\"", result);
+        Assert.Contains("onchange=\"handleChange()\"", result);
+        Assert.Contains("hidden", result);
+        Assert.Contains(">Test Content</div>", result);
+        
+        // Verify it's still a valid div
+        Assert.StartsWith("<div ", result);
+        Assert.EndsWith(">Test Content</div>", result);
+    }
 }

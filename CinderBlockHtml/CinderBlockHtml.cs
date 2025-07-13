@@ -112,6 +112,12 @@ namespace CinderBlockHtml
         /// <returns>An alt attribute.</returns>
         public static XmlAttribute Alt(string value) => new KeyValueAttr("alt", value);
         /// <summary>
+        /// Creates a rel attribute for specifying the relationship between documents.
+        /// </summary>
+        /// <param name="value">The relationship type (e.g., "stylesheet", "nofollow", "noopener").</param>
+        /// <returns>A rel attribute.</returns>
+        public static XmlAttribute Rel(string value) => new KeyValueAttr("rel", value);
+        /// <summary>
         /// Creates a title attribute for tooltips.
         /// </summary>
         /// <param name="value">The tooltip text.</param>
@@ -341,6 +347,15 @@ namespace CinderBlockHtml
         /// <returns>A script element node.</returns>
         public static XmlNode Script(XmlAttribute[] attributes, XmlNode[] children) =>
             new ElementNode("script", attributes, children);
+
+        /// <summary>
+        /// Creates a style element for CSS style definitions.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A style element node.</returns>
+        public static XmlNode Style(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("style", attributes, children);
 
         /// <summary>
         /// Creates an anchor element for links.
