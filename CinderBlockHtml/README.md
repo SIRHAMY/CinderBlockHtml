@@ -15,5 +15,5 @@ However many are reluctant to bridge the gap so here porting a C# version that s
 * Increment version number
 * Run tests: `dotnet test --configuration Release`
 * Build: `dotnet build --configuration Release`
-* Pack: `dotnet pack --configuration Release --no-build`
+* Pack: `dotnet pack --configuration Release`
 * Upload to nuget
