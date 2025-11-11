@@ -161,9 +161,87 @@ public class CinderBlockHtmlTests
         Assert.Contains("onchange=\"handleChange()\"", result);
         Assert.Contains("hidden", result);
         Assert.Contains(">Test Content</div>", result);
-        
+
         // Verify it's still a valid div
         Assert.StartsWith("<div ", result);
         Assert.EndsWith(">Test Content</div>", result);
+    }
+
+    [Fact]
+    public void Elem_Strong_WithAttributes_ShouldRenderCorrectly()
+    {
+        var result = Elem.Strong([Attr.Class("important"), Attr.Id("warning")], [
+            Text.Encoded("Warning!")
+        ]).RenderToString();
+
+        Assert.Equal("<strong class=\"important\" id=\"warning\">Warning!</strong>", result);
+    }
+
+    [Fact]
+    public void Elem_Strong_WithoutAttributes_ShouldRenderCorrectly()
+    {
+        var result = Elem.Strong([
+            Text.Encoded("Bold text")
+        ]).RenderToString();
+
+        Assert.Equal("<strong>Bold text</strong>", result);
+    }
+
+    [Fact]
+    public void Elem_Em_WithAttributes_ShouldRenderCorrectly()
+    {
+        var result = Elem.Em([Attr.Class("emphasis"), Attr.Id("note")], [
+            Text.Encoded("Note this!")
+        ]).RenderToString();
+
+        Assert.Equal("<em class=\"emphasis\" id=\"note\">Note this!</em>", result);
+    }
+
+    [Fact]
+    public void Elem_Em_WithoutAttributes_ShouldRenderCorrectly()
+    {
+        var result = Elem.Em([
+            Text.Encoded("Italic text")
+        ]).RenderToString();
+
+        Assert.Equal("<em>Italic text</em>", result);
+    }
+
+    [Fact]
+    public void Elem_Strong_Nested_ShouldRenderCorrectly()
+    {
+        var result = Elem.P([], [
+            Text.Encoded("This is "),
+            Elem.Strong([Text.Encoded("very important")]),
+            Text.Encoded(" text.")
+        ]).RenderToString();
+
+        Assert.Equal("<p>This is <strong>very important</strong> text.</p>", result);
+    }
+
+    [Fact]
+    public void Elem_Em_Nested_ShouldRenderCorrectly()
+    {
+        var result = Elem.P([], [
+            Text.Encoded("This is "),
+            Elem.Em([Text.Encoded("emphasized")]),
+            Text.Encoded(" text.")
+        ]).RenderToString();
+
+        Assert.Equal("<p>This is <em>emphasized</em> text.</p>", result);
+    }
+
+    [Fact]
+    public void Elem_StrongAndEm_Combined_ShouldRenderCorrectly()
+    {
+        var result = Elem.P([], [
+            Text.Encoded("This is "),
+            Elem.Strong([
+                Elem.Em([Text.Encoded("very strongly emphasized")])
+            ]),
+            Text.Encoded(" text.")
+        ]).RenderToString();
+
+        Assert.Equal("<p>This is <strong><em>very strongly emphasized</em></strong> text.</p>", result);
     }
 }

@@ -340,6 +340,24 @@ namespace CinderBlockHtml
             new ElementNode("span", attributes, children);
 
         /// <summary>
+        /// Creates a strong element for strong importance (typically bold).
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A strong element node.</returns>
+        public static XmlNode Strong(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("strong", attributes, children);
+
+        /// <summary>
+        /// Creates an em element for emphasis (typically italic).
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An em element node.</returns>
+        public static XmlNode Em(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("em", attributes, children);
+
+        /// <summary>
         /// Creates a script element for JavaScript code.
         /// </summary>
         /// <param name="attributes">The attributes for the element.</param>
@@ -540,6 +558,18 @@ namespace CinderBlockHtml
         /// <param name="children">The child nodes.</param>
         /// <returns>A span element node.</returns>
         public static XmlNode Span(XmlNode[] children) => Span(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a strong element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A strong element node.</returns>
+        public static XmlNode Strong(XmlNode[] children) => Strong(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an em element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An em element node.</returns>
+        public static XmlNode Em(XmlNode[] children) => Em(Array.Empty<XmlAttribute>(), children);
         /// <summary>
         /// Creates an H1 heading element with no attributes.
         /// </summary>
