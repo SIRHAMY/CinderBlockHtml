@@ -9,3 +9,7 @@ bench:
 # Run benchmarks in Docker
 bench-docker:
     docker run $(docker build -f Dockerfile.Benchmarks -q .)
+
+# Create NuGet package
+pack:
+    dotnet pack CinderBlockHtml/ --configuration Release
