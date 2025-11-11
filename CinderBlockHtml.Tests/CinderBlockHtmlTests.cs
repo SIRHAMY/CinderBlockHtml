@@ -244,4 +244,259 @@ public class CinderBlockHtmlTests
 
         Assert.Equal("<p>This is <strong><em>very strongly emphasized</em></strong> text.</p>", result);
     }
+
+    [Fact]
+    public void Elem_H4_ShouldRenderCorrectly()
+    {
+        var result = Elem.H4([Text.Encoded("Heading 4")]).RenderToString();
+        Assert.Equal("<h4>Heading 4</h4>", result);
+    }
+
+    [Fact]
+    public void Elem_H5_ShouldRenderCorrectly()
+    {
+        var result = Elem.H5([Text.Encoded("Heading 5")]).RenderToString();
+        Assert.Equal("<h5>Heading 5</h5>", result);
+    }
+
+    [Fact]
+    public void Elem_H6_ShouldRenderCorrectly()
+    {
+        var result = Elem.H6([Text.Encoded("Heading 6")]).RenderToString();
+        Assert.Equal("<h6>Heading 6</h6>", result);
+    }
+
+    [Fact]
+    public void Elem_Code_ShouldRenderCorrectly()
+    {
+        var result = Elem.Code([Text.Encoded("var x = 10;")]).RenderToString();
+        Assert.Equal("<code>var x = 10;</code>", result);
+    }
+
+    [Fact]
+    public void Elem_Pre_ShouldRenderCorrectly()
+    {
+        var result = Elem.Pre([Text.Raw("function test() {\n  return true;\n}")]).RenderToString();
+        Assert.Equal("<pre>function test() {\n  return true;\n}</pre>", result);
+    }
+
+    [Fact]
+    public void Elem_Blockquote_ShouldRenderCorrectly()
+    {
+        var result = Elem.Blockquote([Text.Encoded("To be or not to be")]).RenderToString();
+        Assert.Equal("<blockquote>To be or not to be</blockquote>", result);
+    }
+
+    [Fact]
+    public void Elem_Small_ShouldRenderCorrectly()
+    {
+        var result = Elem.Small([Text.Encoded("Fine print")]).RenderToString();
+        Assert.Equal("<small>Fine print</small>", result);
+    }
+
+    [Fact]
+    public void Elem_Mark_ShouldRenderCorrectly()
+    {
+        var result = Elem.Mark([Text.Encoded("Highlighted")]).RenderToString();
+        Assert.Equal("<mark>Highlighted</mark>", result);
+    }
+
+    [Fact]
+    public void Elem_Sub_ShouldRenderCorrectly()
+    {
+        var result = Elem.P([], [
+            Text.Encoded("H"),
+            Elem.Sub([Text.Encoded("2")]),
+            Text.Encoded("O")
+        ]).RenderToString();
+        Assert.Equal("<p>H<sub>2</sub>O</p>", result);
+    }
+
+    [Fact]
+    public void Elem_Sup_ShouldRenderCorrectly()
+    {
+        var result = Elem.P([], [
+            Text.Encoded("x"),
+            Elem.Sup([Text.Encoded("2")])
+        ]).RenderToString();
+        Assert.Equal("<p>x<sup>2</sup></p>", result);
+    }
+
+    [Fact]
+    public void Elem_Del_ShouldRenderCorrectly()
+    {
+        var result = Elem.Del([Text.Encoded("Deleted text")]).RenderToString();
+        Assert.Equal("<del>Deleted text</del>", result);
+    }
+
+    [Fact]
+    public void Elem_Ins_ShouldRenderCorrectly()
+    {
+        var result = Elem.Ins([Text.Encoded("Inserted text")]).RenderToString();
+        Assert.Equal("<ins>Inserted text</ins>", result);
+    }
+
+    [Fact]
+    public void Elem_Abbr_ShouldRenderCorrectly()
+    {
+        var result = Elem.Abbr([Attr.Title("HyperText Markup Language")], [
+            Text.Encoded("HTML")
+        ]).RenderToString();
+        Assert.Equal("<abbr title=\"HyperText Markup Language\">HTML</abbr>", result);
+    }
+
+    [Fact]
+    public void Elem_Table_CompleteStructure_ShouldRenderCorrectly()
+    {
+        var result = Elem.Table([Attr.Class("data-table")], [
+            Elem.Thead([], [
+                Elem.Tr([], [
+                    Elem.Th([], [Text.Encoded("Name")]),
+                    Elem.Th([], [Text.Encoded("Age")])
+                ])
+            ]),
+            Elem.Tbody([], [
+                Elem.Tr([], [
+                    Elem.Td([], [Text.Encoded("John")]),
+                    Elem.Td([], [Text.Encoded("30")])
+                ]),
+                Elem.Tr([], [
+                    Elem.Td([], [Text.Encoded("Jane")]),
+                    Elem.Td([], [Text.Encoded("25")])
+                ])
+            ])
+        ]).RenderToString();
+
+        Assert.Contains("<table class=\"data-table\">", result);
+        Assert.Contains("<thead>", result);
+        Assert.Contains("<tbody>", result);
+        Assert.Contains("<tr>", result);
+        Assert.Contains("<th>Name</th>", result);
+        Assert.Contains("<td>John</td>", result);
+    }
+
+    [Fact]
+    public void Elem_DefinitionList_ShouldRenderCorrectly()
+    {
+        var result = Elem.Dl([], [
+            Elem.Dt([], [Text.Encoded("HTML")]),
+            Elem.Dd([], [Text.Encoded("HyperText Markup Language")]),
+            Elem.Dt([], [Text.Encoded("CSS")]),
+            Elem.Dd([], [Text.Encoded("Cascading Style Sheets")])
+        ]).RenderToString();
+
+        Assert.Contains("<dl>", result);
+        Assert.Contains("<dt>HTML</dt>", result);
+        Assert.Contains("<dd>HyperText Markup Language</dd>", result);
+        Assert.Contains("<dt>CSS</dt>", result);
+        Assert.Contains("<dd>Cascading Style Sheets</dd>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Header_ShouldRenderCorrectly()
+    {
+        var result = Elem.Header([Attr.Class("site-header")], [
+            Elem.H1([], [Text.Encoded("My Website")])
+        ]).RenderToString();
+
+        Assert.Equal("<header class=\"site-header\"><h1>My Website</h1></header>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Footer_ShouldRenderCorrectly()
+    {
+        var result = Elem.Footer([Text.Encoded("© 2025")]).RenderToString();
+        Assert.Equal("<footer>&#169; 2025</footer>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Nav_ShouldRenderCorrectly()
+    {
+        var result = Elem.Nav([], [
+            Elem.Ul([], [
+                Elem.Li([], [Elem.A([Attr.Href("/")], [Text.Encoded("Home")])]),
+                Elem.Li([], [Elem.A([Attr.Href("/about")], [Text.Encoded("About")])])
+            ])
+        ]).RenderToString();
+
+        Assert.Contains("<nav>", result);
+        Assert.Contains("<ul>", result);
+        Assert.Contains("<a href=\"/\">Home</a>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Article_ShouldRenderCorrectly()
+    {
+        var result = Elem.Article([Attr.Class("post")], [
+            Elem.H2([], [Text.Encoded("Article Title")]),
+            Elem.P([], [Text.Encoded("Article content")])
+        ]).RenderToString();
+
+        Assert.Contains("<article class=\"post\">", result);
+        Assert.Contains("<h2>Article Title</h2>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Section_ShouldRenderCorrectly()
+    {
+        var result = Elem.Section([Text.Encoded("Section content")]).RenderToString();
+        Assert.Equal("<section>Section content</section>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Main_ShouldRenderCorrectly()
+    {
+        var result = Elem.Main([Text.Encoded("Main content")]).RenderToString();
+        Assert.Equal("<main>Main content</main>", result);
+    }
+
+    [Fact]
+    public void Elem_SemanticHtml_Aside_ShouldRenderCorrectly()
+    {
+        var result = Elem.Aside([Text.Encoded("Sidebar content")]).RenderToString();
+        Assert.Equal("<aside>Sidebar content</aside>", result);
+    }
+
+    [Fact]
+    public void Elem_Textarea_ShouldRenderCorrectly()
+    {
+        var result = Elem.Textarea([Attr.Name("comment"), Attr.Placeholder("Enter comment")], [
+            Text.Encoded("Default text")
+        ]).RenderToString();
+
+        Assert.Equal("<textarea name=\"comment\" placeholder=\"Enter comment\">Default text</textarea>", result);
+    }
+
+    [Fact]
+    public void Elem_Fieldset_WithLegend_ShouldRenderCorrectly()
+    {
+        var result = Elem.Fieldset([], [
+            Elem.Legend([], [Text.Encoded("Personal Information")]),
+            Elem.Label([], [Text.Encoded("Name:")]),
+            Elem.Input([Attr.Type("text"), Attr.Name("name")])
+        ]).RenderToString();
+
+        Assert.Contains("<fieldset>", result);
+        Assert.Contains("<legend>Personal Information</legend>", result);
+        Assert.Contains("<label>Name:</label>", result);
+    }
+
+    [Fact]
+    public void Elem_Iframe_ShouldRenderCorrectly()
+    {
+        var result = Elem.Iframe([Attr.Src("https://example.com"), Attr.Title("Example")], []).RenderToString();
+        Assert.Equal("<iframe src=\"https://example.com\" title=\"Example\"></iframe>", result);
+    }
+
+    [Fact]
+    public void Elem_Canvas_ShouldRenderCorrectly()
+    {
+        var result = Elem.Canvas([Attr.Id("myCanvas"), Attr.Custom("width", "800"), Attr.Custom("height", "600")], [
+            Text.Encoded("Your browser does not support canvas")
+        ]).RenderToString();
+
+        Assert.Contains("<canvas id=\"myCanvas\" width=\"800\" height=\"600\">", result);
+        Assert.Contains("Your browser does not support canvas", result);
+        Assert.Contains("</canvas>", result);
+    }
 }

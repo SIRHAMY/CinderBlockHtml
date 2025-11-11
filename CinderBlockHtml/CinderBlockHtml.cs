@@ -358,6 +358,96 @@ namespace CinderBlockHtml
             new ElementNode("em", attributes, children);
 
         /// <summary>
+        /// Creates a code element for inline code.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A code element node.</returns>
+        public static XmlNode Code(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("code", attributes, children);
+
+        /// <summary>
+        /// Creates a pre element for preformatted text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A pre element node.</returns>
+        public static XmlNode Pre(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("pre", attributes, children);
+
+        /// <summary>
+        /// Creates a blockquote element for quoted content.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A blockquote element node.</returns>
+        public static XmlNode Blockquote(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("blockquote", attributes, children);
+
+        /// <summary>
+        /// Creates a small element for fine print or small text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A small element node.</returns>
+        public static XmlNode Small(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("small", attributes, children);
+
+        /// <summary>
+        /// Creates a mark element for highlighted text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A mark element node.</returns>
+        public static XmlNode Mark(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("mark", attributes, children);
+
+        /// <summary>
+        /// Creates a sub element for subscript text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A sub element node.</returns>
+        public static XmlNode Sub(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("sub", attributes, children);
+
+        /// <summary>
+        /// Creates a sup element for superscript text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A sup element node.</returns>
+        public static XmlNode Sup(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("sup", attributes, children);
+
+        /// <summary>
+        /// Creates a del element for deleted text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A del element node.</returns>
+        public static XmlNode Del(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("del", attributes, children);
+
+        /// <summary>
+        /// Creates an ins element for inserted text.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An ins element node.</returns>
+        public static XmlNode Ins(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("ins", attributes, children);
+
+        /// <summary>
+        /// Creates an abbr element for abbreviations.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An abbr element node.</returns>
+        public static XmlNode Abbr(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("abbr", attributes, children);
+
+        /// <summary>
         /// Creates a script element for JavaScript code.
         /// </summary>
         /// <param name="attributes">The attributes for the element.</param>
@@ -412,6 +502,33 @@ namespace CinderBlockHtml
             new ElementNode("h3", attributes, children);
 
         /// <summary>
+        /// Creates an H4 heading element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H4 element node.</returns>
+        public static XmlNode H4(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("h4", attributes, children);
+
+        /// <summary>
+        /// Creates an H5 heading element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H5 element node.</returns>
+        public static XmlNode H5(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("h5", attributes, children);
+
+        /// <summary>
+        /// Creates an H6 heading element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H6 element node.</returns>
+        public static XmlNode H6(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("h6", attributes, children);
+
+        /// <summary>
         /// Creates an unordered list element.
         /// </summary>
         /// <param name="attributes">The attributes for the element.</param>
@@ -437,6 +554,159 @@ namespace CinderBlockHtml
         /// <returns>A list item element node.</returns>
         public static XmlNode Li(XmlAttribute[] attributes, XmlNode[] children) =>
             new ElementNode("li", attributes, children);
+
+        /// <summary>
+        /// Creates a definition list element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A definition list element node.</returns>
+        public static XmlNode Dl(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("dl", attributes, children);
+
+        /// <summary>
+        /// Creates a definition term element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A definition term element node.</returns>
+        public static XmlNode Dt(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("dt", attributes, children);
+
+        /// <summary>
+        /// Creates a definition description element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A definition description element node.</returns>
+        public static XmlNode Dd(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("dd", attributes, children);
+
+        /// <summary>
+        /// Creates a table element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A table element node.</returns>
+        public static XmlNode Table(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("table", attributes, children);
+
+        /// <summary>
+        /// Creates a table header group element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A thead element node.</returns>
+        public static XmlNode Thead(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("thead", attributes, children);
+
+        /// <summary>
+        /// Creates a table body element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tbody element node.</returns>
+        public static XmlNode Tbody(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("tbody", attributes, children);
+
+        /// <summary>
+        /// Creates a table footer group element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tfoot element node.</returns>
+        public static XmlNode Tfoot(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("tfoot", attributes, children);
+
+        /// <summary>
+        /// Creates a table row element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tr element node.</returns>
+        public static XmlNode Tr(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("tr", attributes, children);
+
+        /// <summary>
+        /// Creates a table data cell element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A td element node.</returns>
+        public static XmlNode Td(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("td", attributes, children);
+
+        /// <summary>
+        /// Creates a table header cell element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A th element node.</returns>
+        public static XmlNode Th(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("th", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic header element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A header element node.</returns>
+        public static XmlNode Header(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("header", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic footer element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A footer element node.</returns>
+        public static XmlNode Footer(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("footer", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic navigation element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A nav element node.</returns>
+        public static XmlNode Nav(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("nav", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic section element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A section element node.</returns>
+        public static XmlNode Section(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("section", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic article element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An article element node.</returns>
+        public static XmlNode Article(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("article", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic main element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A main element node.</returns>
+        public static XmlNode Main(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("main", attributes, children);
+
+        /// <summary>
+        /// Creates a semantic aside element.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An aside element node.</returns>
+        public static XmlNode Aside(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("aside", attributes, children);
 
         /// <summary>
         /// Creates a button element.
@@ -482,6 +752,33 @@ namespace CinderBlockHtml
         /// <returns>An option element node.</returns>
         public static XmlNode Option(XmlAttribute[] attributes, XmlNode[] children) =>
             new ElementNode("option", attributes, children);
+
+        /// <summary>
+        /// Creates a textarea element for multi-line text input.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A textarea element node.</returns>
+        public static XmlNode Textarea(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("textarea", attributes, children);
+
+        /// <summary>
+        /// Creates a fieldset element for grouping form controls.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A fieldset element node.</returns>
+        public static XmlNode Fieldset(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("fieldset", attributes, children);
+
+        /// <summary>
+        /// Creates a legend element for fieldset captions.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A legend element node.</returns>
+        public static XmlNode Legend(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("legend", attributes, children);
 
         /// <summary>
         /// Creates a title element for document titles.
@@ -541,6 +838,24 @@ namespace CinderBlockHtml
             new SelfClosingNode("link", attributes);
 
         /// <summary>
+        /// Creates an iframe element for embedded content.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An iframe element node.</returns>
+        public static XmlNode Iframe(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("iframe", attributes, children);
+
+        /// <summary>
+        /// Creates a canvas element for drawing graphics.
+        /// </summary>
+        /// <param name="attributes">The attributes for the element.</param>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A canvas element node.</returns>
+        public static XmlNode Canvas(XmlAttribute[] attributes, XmlNode[] children) =>
+            new ElementNode("canvas", attributes, children);
+
+        /// <summary>
         /// Creates a div element with no attributes.
         /// </summary>
         /// <param name="children">The child nodes.</param>
@@ -589,6 +904,24 @@ namespace CinderBlockHtml
         /// <returns>An H3 element node.</returns>
         public static XmlNode H3(XmlNode[] children) => H3(Array.Empty<XmlAttribute>(), children);
         /// <summary>
+        /// Creates an H4 heading element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H4 element node.</returns>
+        public static XmlNode H4(XmlNode[] children) => H4(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an H5 heading element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H5 element node.</returns>
+        public static XmlNode H5(XmlNode[] children) => H5(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an H6 heading element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An H6 element node.</returns>
+        public static XmlNode H6(XmlNode[] children) => H6(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
         /// Creates an unordered list element with no attributes.
         /// </summary>
         /// <param name="children">The child nodes.</param>
@@ -612,6 +945,198 @@ namespace CinderBlockHtml
         /// <param name="children">The child nodes.</param>
         /// <returns>An anchor element node.</returns>
         public static XmlNode A(XmlNode[] children) => A(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a code element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A code element node.</returns>
+        public static XmlNode Code(XmlNode[] children) => Code(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a pre element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A pre element node.</returns>
+        public static XmlNode Pre(XmlNode[] children) => Pre(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a blockquote element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A blockquote element node.</returns>
+        public static XmlNode Blockquote(XmlNode[] children) => Blockquote(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a small element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A small element node.</returns>
+        public static XmlNode Small(XmlNode[] children) => Small(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a mark element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A mark element node.</returns>
+        public static XmlNode Mark(XmlNode[] children) => Mark(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a sub element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A sub element node.</returns>
+        public static XmlNode Sub(XmlNode[] children) => Sub(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a sup element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A sup element node.</returns>
+        public static XmlNode Sup(XmlNode[] children) => Sup(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a del element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A del element node.</returns>
+        public static XmlNode Del(XmlNode[] children) => Del(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an ins element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An ins element node.</returns>
+        public static XmlNode Ins(XmlNode[] children) => Ins(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an abbr element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An abbr element node.</returns>
+        public static XmlNode Abbr(XmlNode[] children) => Abbr(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a table element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A table element node.</returns>
+        public static XmlNode Table(XmlNode[] children) => Table(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a thead element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A thead element node.</returns>
+        public static XmlNode Thead(XmlNode[] children) => Thead(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a tbody element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tbody element node.</returns>
+        public static XmlNode Tbody(XmlNode[] children) => Tbody(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a tfoot element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tfoot element node.</returns>
+        public static XmlNode Tfoot(XmlNode[] children) => Tfoot(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a tr element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A tr element node.</returns>
+        public static XmlNode Tr(XmlNode[] children) => Tr(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a td element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A td element node.</returns>
+        public static XmlNode Td(XmlNode[] children) => Td(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a th element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A th element node.</returns>
+        public static XmlNode Th(XmlNode[] children) => Th(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a dl element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A dl element node.</returns>
+        public static XmlNode Dl(XmlNode[] children) => Dl(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a dt element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A dt element node.</returns>
+        public static XmlNode Dt(XmlNode[] children) => Dt(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a dd element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A dd element node.</returns>
+        public static XmlNode Dd(XmlNode[] children) => Dd(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a header element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A header element node.</returns>
+        public static XmlNode Header(XmlNode[] children) => Header(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a footer element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A footer element node.</returns>
+        public static XmlNode Footer(XmlNode[] children) => Footer(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a nav element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A nav element node.</returns>
+        public static XmlNode Nav(XmlNode[] children) => Nav(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a section element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A section element node.</returns>
+        public static XmlNode Section(XmlNode[] children) => Section(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an article element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An article element node.</returns>
+        public static XmlNode Article(XmlNode[] children) => Article(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a main element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A main element node.</returns>
+        public static XmlNode Main(XmlNode[] children) => Main(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an aside element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An aside element node.</returns>
+        public static XmlNode Aside(XmlNode[] children) => Aside(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a textarea element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A textarea element node.</returns>
+        public static XmlNode Textarea(XmlNode[] children) => Textarea(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a fieldset element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A fieldset element node.</returns>
+        public static XmlNode Fieldset(XmlNode[] children) => Fieldset(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a legend element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A legend element node.</returns>
+        public static XmlNode Legend(XmlNode[] children) => Legend(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates an iframe element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>An iframe element node.</returns>
+        public static XmlNode Iframe(XmlNode[] children) => Iframe(Array.Empty<XmlAttribute>(), children);
+        /// <summary>
+        /// Creates a canvas element with no attributes.
+        /// </summary>
+        /// <param name="children">The child nodes.</param>
+        /// <returns>A canvas element node.</returns>
+        public static XmlNode Canvas(XmlNode[] children) => Canvas(Array.Empty<XmlAttribute>(), children);
 
         /// <summary>
         /// Creates a br element with no attributes.
