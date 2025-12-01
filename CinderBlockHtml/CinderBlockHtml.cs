@@ -27,6 +27,10 @@ namespace CinderBlockHtml
     /// <param name="Tag">The HTML tag name.</param>
     /// <param name="Attributes">The attributes for the element.</param>
     public record SelfClosingNode(string Tag, XmlAttribute[] Attributes) : XmlNode;
+    /// <summary>
+    /// Represents an empty node that renders to nothing. Useful for conditional expressions.
+    /// </summary>
+    public record EmptyNode : XmlNode;
 
     /// <summary>
     /// Abstract base class for all XML attributes.
@@ -43,6 +47,10 @@ namespace CinderBlockHtml
     /// </summary>
     /// <param name="Key">The attribute name.</param>
     public record BooleanAttr(string Key) : XmlAttribute;
+    /// <summary>
+    /// Represents an empty attribute that renders to nothing. Useful for conditional expressions.
+    /// </summary>
+    public record EmptyAttr : XmlAttribute;
 
     /// <summary>
     /// Provides methods for creating text nodes with different encoding behaviors.
@@ -277,6 +285,16 @@ namespace CinderBlockHtml
         /// <returns>An empty attribute array.</returns>
         public static XmlAttribute[] Empty() =>
             Array.Empty<XmlAttribute>();
+
+        /// <summary>
+        /// A single empty attribute that renders to nothing. Useful for conditional expressions.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// Elem.Button([Attr.Class("btn"), isActive ? Attr.Class("active") : Attr.None], children)
+        /// </code>
+        /// </example>
+        public static XmlAttribute None { get; } = new EmptyAttr();
 
     }
 
@@ -1174,6 +1192,16 @@ namespace CinderBlockHtml
         /// <returns>An empty node array.</returns>
         public static XmlNode[] Empty() =>
             Array.Empty<XmlNode>();
+
+        /// <summary>
+        /// A single empty node that renders to nothing. Useful for conditional expressions.
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// Elem.Div([], [Text.Encoded("Hello"), showMore ? Text.Encoded(" World") : Elem.None])
+        /// </code>
+        /// </example>
+        public static XmlNode None { get; } = new EmptyNode();
     }
 
     /// <summary>
@@ -1211,13 +1239,17 @@ namespace CinderBlockHtml
                     sb.Append('<').Append(element.Tag);
                     RenderAttributes(element.Attributes, sb);
                     sb.Append('>');
-                    
+
                     foreach (var child in element.Children)
                     {
                         RenderNode(child, sb);
                     }
-                    
+
                     sb.Append("</").Append(element.Tag).Append('>');
+                    break;
+
+                case EmptyNode:
+                    // Empty nodes render to nothing
                     break;
             }
         }
@@ -1235,6 +1267,10 @@ namespace CinderBlockHtml
 
                     case BooleanAttr boolean:
                         sb.Append(' ').Append(boolean.Key);
+                        break;
+
+                    case EmptyAttr:
+                        // Empty attributes render to nothing
                         break;
                 }
             }

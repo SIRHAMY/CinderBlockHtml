@@ -499,4 +499,77 @@ public class CinderBlockHtmlTests
         Assert.Contains("Your browser does not support canvas", result);
         Assert.Contains("</canvas>", result);
     }
+
+    [Fact]
+    public void Elem_None_ShouldRenderToNothing()
+    {
+        var result = Elem.None.RenderToString();
+
+        Assert.Equal("", result);
+    }
+
+    [Fact]
+    public void Attr_None_ShouldRenderToNothing()
+    {
+        var result = Elem.Div([Attr.Class("test"), Attr.None], [
+            Text.Encoded("Content")
+        ]).RenderToString();
+
+        Assert.Equal("<div class=\"test\">Content</div>", result);
+    }
+
+    [Fact]
+    public void Elem_None_InConditional_ShouldWorkCorrectly()
+    {
+        var showExtra = false;
+        var result = Elem.Div([], [
+            Text.Encoded("Hello"),
+            showExtra ? Text.Encoded(" World") : Elem.None
+        ]).RenderToString();
+
+        Assert.Equal("<div>Hello</div>", result);
+    }
+
+    [Fact]
+    public void Attr_None_InConditional_ShouldWorkCorrectly()
+    {
+        var isActive = false;
+        var result = Elem.Button([
+            Attr.Class("btn"),
+            isActive ? Attr.Class("active") : Attr.None
+        ], [
+            Text.Encoded("Click")
+        ]).RenderToString();
+
+        Assert.Equal("<button class=\"btn\">Click</button>", result);
+    }
+
+    [Fact]
+    public void Elem_None_WithMultipleEmpty_ShouldRenderCorrectly()
+    {
+        var result = Elem.Div([], [
+            Elem.None,
+            Text.Encoded("Content"),
+            Elem.None,
+            Elem.None
+        ]).RenderToString();
+
+        Assert.Equal("<div>Content</div>", result);
+    }
+
+    [Fact]
+    public void Attr_None_WithMultipleEmpty_ShouldRenderCorrectly()
+    {
+        var result = Elem.Div([
+            Attr.None,
+            Attr.Class("test"),
+            Attr.None,
+            Attr.Id("main"),
+            Attr.None
+        ], [
+            Text.Encoded("Content")
+        ]).RenderToString();
+
+        Assert.Equal("<div class=\"test\" id=\"main\">Content</div>", result);
+    }
 }
